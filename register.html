@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6404a05844.js" crossorigin="anonymous"></script>
+    <title>The Fashion Pet</title>
+</head>
+<body>
+    <header>
+        <nav class="nav justify-content-end">
+            <a class="nav-link active" aria-current="page" href="index">Home</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="register.html">Register</a>
+            <a class="nav-link disabled">Admin</a>
+        </nav>
+        <h1 class="display-1">The Fashion Pet</h1>
+    </header>
+
+    <main class="container">
+        <h2 class="display-6">register a new pet</h2>
+        <div class="petContainer">
+            <input type="text" id="petName">
+            <button onclick="registerPet();">Register</button>
+
+            <ul id="pet-list">
+
+            </ul>
+
+        </div>
+    </main>
+
+    <footer>
+
+        <p>All the copyrights reserved Kevin Fonteyne &copy; 2022</p>
+        <p id="info"></p>
+    </footer>
+
+    <script src="register.js"></script>
+</body>
+</html>
