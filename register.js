@@ -43,6 +43,9 @@ let petSalon ={
 for(let i = 0; i <petSalon.pets.length;i++){
     console.log(petSalon.pets[i].name);
 }
+
+alert(`Number of pets: ${petSalon.pets.length}`);
+
 let id = 0;
 function registerPet(){
     let petName=document.getElementById('petName').value;
