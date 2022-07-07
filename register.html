@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://kit.fontawesome.com/6404a05844.js" crossorigin="anonymous"></script>
     <title>The Fashion Pet</title>
 </head>
@@ -21,16 +21,32 @@
     </header>
 
     <main class="container">
-        <h2 class="display-6">register a new pet</h2>
-        <div class="petContainer">
-            <input type="text" id="petName">
-            <button onclick="registerPet();">Register</button>
-
-            <ul id="pet-list">
-
-            </ul>
-
+        <div class="title">
+            <h2 class="display-6">register a new pet</h2>
+            <p id = "number-pets"></p>
         </div>
+        <div>
+            <input type="text" class="form-control" placeholder="Enter pet's name" id="txtPetName">
+            <input type="text" class="form-control" placeholder="Enter pet's age" id="numPetAge">
+            <input type="text" class="form-control" placeholder="Enter pets gender" id="txtPetGender">
+            <input type="text" class="form-control" placeholder="Enter pet's breed" id="txtPetBreed">
+            <input type="text" class ="form-control" placeholder="Contact number" id="txtPetPhone">
+            <input type="text" class ="form-control" placeholder="Enter your name" id="txtPetOwner">
+            <select class="form-select" id="txtPetService">
+                <option value="Nail cut">Nail cut</option>
+                <option value="Gromming">Grooming</option>
+                <option value="Vaccines">Vaccines</option>                
+            </select>
+            <div class="btn-container">
+                <button class="btn btn-primary" id="btnSave" onclick="register();">Register</button>
+                <div id="pet-card" class="pets"></div>
+            </div>
+            
+        </div>
+        <table class="table" id="pet-table">
+            <!--insert the tr with pet information (tbody)-->
+        </table>
+        
     </main>
 
     <footer>
@@ -39,6 +55,7 @@
         <p id="info"></p>
     </footer>
 
-    <script src="register.js"></script>
+    <script src="scripts/register.js"></script>
+    <script src="scripts/display.js"></script>
 </body>
 </html>
