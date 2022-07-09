@@ -14,6 +14,7 @@ function displayCardPets(){
                 <p>Owner: ${pet.owner}</p>
                 <p>Phone: ${pet.phone}</p>
                 <p>Service: ${pet.service}</p>
+                <button class="btn btn-danger">Delete</button>
             </div>
         `;
 
@@ -33,20 +34,19 @@ function displayPetsTable(){
         let pet=petSalon.pets[i];
         //create the table
         tr+=`
-            <table id="pet-table">
-                <tr>
-                    <th>Name: ${pet.name}</th>
-                </tr>
-                <tr>
-                    <td>Age: ${pet.age}</td>
-                    <td>Gender: ${pet.gender}</td>
-                    <td>Breed: ${pet.breed}</td>
-                    <td>Owner: ${pet.owner}</td>
-                    <td>Phone: ${pet.phone}</td>
-                    <td>Service: ${pet.service}</td>
-                </tr>
-            </table>
-        `;        
+             <tr id=${pet.id}>
+                 <td>${pet.name}</td>
+                 <td>${pet.age}</td>
+                 <td>${pet.gender}</td>
+                 <td>${pet.breed}</td>
+                 <td>${pet.owner}</td>
+                 <td>${pet.phone}</td>
+                 <td>${pet.service}</td> 
+                 <td>
+                    <button class="btn btn-danger" onclick="deletePet(${pet.id});">Delete</button>
+                </td>             
+            </tr>
+        `;       
     }
     //tr+= (tr,th,td)
     //inject the tr into the HTML table

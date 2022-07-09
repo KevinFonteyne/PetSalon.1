@@ -12,9 +12,12 @@ let petSalon ={
     pets:[]
 }
 
+//counter
+let c=0;
+
 //constructor function
 //---------Parameters/ local variables------>
-function Pet(name, age, gender, breed, service, ownerName, contactPhone){
+function Pet(name, age, gender, breed, ownerName, contactPhone, service){
     //attributes = parameters
     this.name=name;
     this.age=age;
@@ -23,8 +26,8 @@ function Pet(name, age, gender, breed, service, ownerName, contactPhone){
     this.service=service;
     this.owner=ownerName;
     this.phone=contactPhone;
+    this.id=c++;
 }
-
 
 //creating the functions
 function displayInfo(){
@@ -53,7 +56,7 @@ function register(){
     let petService=document.getElementById("txtPetService").value;
     console.log(petName,petAge,petGender,petBreed,petService,petOwner,petPhone);
     //create the object
-    let newPet = new Pet(petName, petAge, petGender, petBreed, petOwner, petPhone);
+    let newPet = new Pet(petName, petAge, petGender, petBreed, petOwner, petPhone, petService);
     if(isValid(newPet)){
     console.log(newPet);
     //push the object
@@ -76,16 +79,33 @@ function clearInputs(){
     document.getElementById("txtPetOwner").value="";
     document.getElementById("txtPetService").value="";
 }
+
+function deletePet(petID){
+    document.getElementById(petID).remove();
+    //travel the array
+    let petIndex;
+    for(let i=0;i<petSalon.pets.length;i++){
+        let pet=petSalon.pets[i];
+    //compare the id og the pet
+        if(pet.id == petID){
+            petIndex=i;//get the pet index
+        }
+    }    
+    petSalon.pets.splice(petIndex,1);//remove from the array
+    displayNumberOfPets();//update the displayNumberOfPets()
+}
+
 function init(){
     //creating objects
-    let scrappy = new Pet("Scrappy", 15,"Male","Dane","Grooming","Shaggy","666-666-6666");
-    let speedy = new Pet("Speedyy", 35,"Male","Mouse","Grooming","Shaggy","666-666-6666");
-    let scooby = new Pet("Scooby",50,"Male","Dane","Grooming","Shaggy","666-666-6666");
-    petSalon.pets.push(scooby,scrappy,speedy);
+    let scrappy = new Pet("Scrappy", 15,"Male","Dane","Shaggy","666-666-6666", "Grooming");
+    let speedy = new Pet("Speedy", 35,"Male","Mouse","Shaggy","666-666-6666", "Grooming");
+    let scooby = new Pet("Scooby",50,"Male","Dane","Shaggy","666-666-6666", "Grooming");
+    petSalon.pets.push(scrappy,speedy,scooby);
     console.log(petSalon.pets);
     //calling the function
     displayNumberOfPets();
     displayInfo();
+    displayPetsTable();
     //hook events
 }
 
