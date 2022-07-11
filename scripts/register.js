@@ -39,7 +39,7 @@ function displayNumberOfPets(){
 
 function isValid(aPet){
     let valid=true;
-    if(aPet.name=="" || aPet.age=="" || aPet.gender=="" || aPet.breed=="" || aPet.phone=="" || aPet.owner=="" || aPet.service==""){
+    if(aPet.name=="" || aPet.age=="" || aPet.gender=="" || aPet.breed=="" || aPet.phone=="" || aPet.owner=="" || aPet.service=="" || aPet.comment==""){
         valid=false;
     }
     return valid;
@@ -54,22 +54,38 @@ function register(){
     let petOwner=document.getElementById("txtPetOwner").value;
     let petPhone=document.getElementById("txtPetPhone").value;
     let petService=document.getElementById("txtPetService").value;
+    let petComment=document.getElementById("txtComment").value;
     console.log(petName,petAge,petGender,petBreed,petService,petOwner,petPhone);
     //create the object
-    let newPet = new Pet(petName, petAge, petGender, petBreed, petOwner, petPhone, petService);
+    let newPet = new Pet(petName, petAge, petGender, petBreed, petOwner, petPhone, petService, petComment);
     if(isValid(newPet)){
     console.log(newPet);
     //push the object
     petSalon.pets.push(newPet);
-    displayCardPets();
+    //displayCardPets();
     displayPetsTable();
     console.log(petSalon.pets);
-    displayNumberOfPets();
+    //displayNumberOfPets();
     clearInputs();
     }else{
         alert("Please enter valid information");
     }
 }
+
+function search(){
+    //get info from the inputs
+    let searchString=document.getElementById("txtSearch").value;
+
+    for(let i=0;i<petSalon.pets.length;i++){
+        let pet=petSalon.pets[i];
+        if(searchString.toLowerCase()==pet.name.toLowerCase()){
+            document.getElementById(pet.id).classList.add("selected");
+        }else{
+            document.getElementById(pet.id).classList.remove("selected");
+        }
+    }
+}
+        
 function clearInputs(){
     document.getElementById("txtPetName").value="";
     document.getElementById("numPetAge").value="";
@@ -78,6 +94,7 @@ function clearInputs(){
     document.getElementById("txtPetPhone").value="";
     document.getElementById("txtPetOwner").value="";
     document.getElementById("txtPetService").value="";
+    document.getElementById("txtComment").value="";
 }
 
 function deletePet(petID){
@@ -92,18 +109,18 @@ function deletePet(petID){
         }
     }    
     petSalon.pets.splice(petIndex,1);//remove from the array
-    displayNumberOfPets();//update the displayNumberOfPets()
+    //displayNumberOfPets();//update the displayNumberOfPets()
 }
 
 function init(){
     //creating objects
-    let scrappy = new Pet("Scrappy", 15,"Male","Dane","Shaggy","666-666-6666", "Grooming");
-    let speedy = new Pet("Speedy", 35,"Male","Mouse","Shaggy","666-666-6666", "Grooming");
-    let scooby = new Pet("Scooby",50,"Male","Dane","Shaggy","666-666-6666", "Grooming");
-    petSalon.pets.push(scrappy,speedy,scooby);
-    console.log(petSalon.pets);
+    // let scrappy = new Pet("Scrappy", 15,"Male","Dane","Shaggy","666-666-6666", "Grooming");
+    // let speedy = new Pet("Speedy", 35,"Male","Mouse","Shaggy","666-666-6666", "Grooming");
+    // let scooby = new Pet("Scooby",50,"Male","Dane","Shaggy","666-666-6666", "Grooming");
+    // petSalon.pets.push(scrappy,speedy,scooby);
+    // console.log(petSalon.pets);
     //calling the function
-    displayNumberOfPets();
+    //displayNumberOfPets();
     displayInfo();
     displayPetsTable();
     //hook events

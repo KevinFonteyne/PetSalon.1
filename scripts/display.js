@@ -43,7 +43,7 @@ function displayPetsTable(){
                  <td>${pet.phone}</td>
                  <td>${pet.service}</td> 
                  <td>
-                    <button class="btn btn-danger" onclick="deletePet(${pet.id});">Delete</button>
+                    <button class="btn btn-danger" onclick="deletePet(${pet.id});"><i class="fa-solid fa-trash-can"></i> Delete</button>
                 </td>             
             </tr>
         `;       
